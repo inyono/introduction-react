@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="http://codepen.io/collection/XQbgZr/">React Introduction</a>
+      </div>
+
+      <div>
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="1_hello-world.html">1</a>
+          </li>
+          <li>
+            <a href="2_hello-world-props.html">2</a>
+          </li>
+          <li>
+            <a href="3_hello-world-jsx.html">3</a>
+          </li>
+          <li>
+            <a href="4_markdown.html">4</a>
+          </li>
+          <li>
+            <a href="5_markdown-live-preview.html">5</a>
+          </li>
+          <li class="active">
+            <a href="6_data-fetching.html">6</a>
+          </li>
+          <li>
+            <a href="7_redux.html">7</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding: 75px 15px; text-align:center;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Example 6. Data fetching</h3>
+      </div>
+      <div class="panel-body" id="app">
+        This content will be replaced by React
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://npmcdn.com/react@0.14.7/dist/react.js"></script>
+  <script type="text/javascript" src="https://npmcdn.com/react-dom@0.14.7/dist/react-dom.js"></script>
+  <script type="text/javascript" src="https://npmcdn.com/babel-core@5.8.35/browser.js"></script>
+
+  <script type="text/babel">
+
+    // see https://facebook.github.io/react/docs/component-specs.html for all Lifecycle methods
+    var FetchingExample = React.createClass({
+      getInitialState: function () {
+        return { message: '' }
+      },
+
+      // Invoked once, only on the client, immediately after the initial rendering
+      componentDidMount: function () {
+        var self = this
+
+        // simulate server call
+        window.setTimeout(
+          function () {
+            self.setState({ message: 'fancy data fetched' })
+          },
+          5000
+        )
+      },
+
+      render: function () {
+        if (this.state.message.length === 0) {
+          return <span className="fa fa-spinner fa-3x fa-spin " />
+        }
+
+        return <div>{this.state.message}</div>
+      }
+    })
+
+    ReactDOM.render(<FetchingExample />, document.getElementById('app'))
+  </script>
+</body>
+</html>

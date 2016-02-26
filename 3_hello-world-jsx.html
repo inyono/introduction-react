@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="http://codepen.io/collection/XQbgZr/">React Introduction</a>
+      </div>
+
+      <div>
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="1_hello-world.html">1</a>
+          </li>
+          <li>
+            <a href="2_hello-world-props.html">2</a>
+          </li>
+          <li class="active">
+            <a href="3_hello-world-jsx.html">3</a>
+          </li>
+          <li>
+            <a href="4_markdown.html">4</a>
+          </li>
+          <li>
+            <a href="5_markdown-live-preview.html">5</a>
+          </li>
+          <li>
+            <a href="6_data-fetching.html">6</a>
+          </li>
+          <li>
+            <a href="7_redux.html">7</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="padding: 75px 15px; text-align:center;">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Example 3. Hello World with JSX</h3>
+      </div>
+      <div class="panel-body" id="app">
+        This content will be replaced by React
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://npmcdn.com/react@0.14.7/dist/react.js"></script>
+  <script type="text/javascript" src="https://npmcdn.com/react-dom@0.14.7/dist/react-dom.js"></script>
+  <script type="text/javascript" src="https://npmcdn.com/babel-core@5.8.35/browser.js"></script>
+
+  <!-- Babel compiles next-generation JavaScript (like ES6, ES7) and custom features (like JSX) to ES5 -->
+  <script type="text/babel">
+    // Creates a new React component class
+    var Greeting = React.createClass({
+      // returns a single ReactElement (or null)
+      render: function () {
+        // props passed to the component
+        console.log(this.props)
+
+        // see https://facebook.github.io/react/docs/dom-differences.html
+        // and https://facebook.github.io/react/docs/jsx-gotchas.html
+        return <div>Hello {this.props.name}</div>
+      }
+    })
+
+    // If you only implement the `render` method, you can use functional components:
+    var GreetingFunctional = function (props) {
+      return <div>Hello {props.name}</div>
+    }
+
+    // renders a ReactElement into the DOM
+    ReactDOM.render(<Greeting name="Wikimedia" />, document.getElementById('app'))
+  </script>
+</body>
+</html>
